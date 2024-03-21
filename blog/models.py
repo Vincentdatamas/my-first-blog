@@ -8,6 +8,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     text = models.TextField()
     image = models.ImageField(upload_to='images/', blank=True, null=True)  # Champ pour les images
+    #content = models.TextField("Contenu à venir")  # Champ pour le contenu du post
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
 
