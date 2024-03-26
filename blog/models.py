@@ -1,6 +1,5 @@
 from django.db import models
 from django.conf import settings
-from django.db import models
 from django.utils import timezone
 
 class Post(models.Model):
@@ -8,7 +7,6 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     text = models.TextField()
     image = models.ImageField(upload_to='images/', blank=True, null=True)  # Champ pour les images
-    #content = models.TextField("Contenu à venir")  # Champ pour le contenu du post
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
 
@@ -18,4 +16,8 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
-# Create your models here.
+
+    def image_path(self):
+        if self.image:
+            return f'images/{self.image.name}'
+        return None
